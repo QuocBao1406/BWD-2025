@@ -166,7 +166,7 @@ const Profile = () => {
         </div>
 
         <form className="right-panel" onSubmit={handleSave}>
-          <label>Username (không thể thay đổi):</label>
+          <label>Username:</label>
           <input type="text" name="username" value={formData.username} readOnly />
 
           <label>Tên hiển thị:</label>

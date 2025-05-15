@@ -97,7 +97,7 @@ function LoginPage() {
 
             const localUser = {
                 id: data.id,
-                name: data.username || loginData.username,
+                username: data.username || loginData.username,
                 email: data.email || '',
                 provider: 'local',
                 avatar: data.avatar || null // ✅ lấy từ backend

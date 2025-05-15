@@ -18,7 +18,7 @@ router.post('/register', async (req, res) => {
       return res.status(409).json({ message: 'Email already exises!' });
     }
 
-    const [check] = await query('SELECT * FROM users WHERE name = ?', [username]);
+    const [check] = await query('SELECT * FROM users WHERE username = ?', [username]);
     if (check.length > 0) {
       return res.status(409).json({ message: 'Username already exises!' });
     }
@@ -26,7 +26,7 @@ router.post('/register', async (req, res) => {
     const hashedPassword = await hash(password, 10);
 
     await query(
-      'INSERT INTO users (name, email, password, auth_provider) VALUES (?, ?, ?, ?)',
+      'INSERT INTO users (username, email, password, auth_provider) VALUES (?, ?, ?, ?)',
       [username, email, hashedPassword, 'local']
     );
 
@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    const [rows] = await query('SELECT * FROM users WHERE name = ?', [username]);
+    const [rows] = await query('SELECT * FROM users WHERE username = ?', [username]);
 
     if (rows.length === 0) {
       return res.status(401).json({ message: 'NO EXISTING THAT ACCOUNT!' });
@@ -58,7 +58,7 @@ router.post('/login', async (req, res) => {
     res.json({
       message: 'LOGIN SUCESSFUL!',
       id: user.id,
-      username: user.name,
+      username: user.username,
       email: user.email,
       avatar: user.avatar ? `data:image/jpeg;base64,${Buffer.from(user.avatar).toString('base64')}` : null
     });
