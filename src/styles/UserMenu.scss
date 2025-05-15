@@ -1,0 +1,62 @@
+.user-menu {
+    position: relative;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+
+    .avatar {
+        margin-top: 5px;
+        margin-left: 0;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .dropdown {
+        position: absolute;
+        right: -22px;
+        margin-top: 12px;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        width: 140px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        height: auto;
+
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+
+        &.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        li {
+            padding: 4px 10px;
+            margin: 0;
+            list-style: none;
+            border-radius: 0%;
+            width: 100%;
+
+            &:hover {
+                background-color: lightgray;
+            }
+            
+            a {
+                text-decoration: none;
+                color: black;
+                width: 100%;
+            }
+        }
+    }
+}

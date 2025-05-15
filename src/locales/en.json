@@ -1,0 +1,58 @@
+{
+  "welcome": "Welcome to our website!",
+  "language": "Language",
+  "loginPage": {
+    "leftTitle": "Hello, Welcome!",
+    "subLeftTitle": "Don't have an account?",
+    "leftButton": "Register",
+    "rightTitle": "Login",
+    "username": "Username",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "rightButton": "Login",
+    "otherOption": "or continue with social platforms",
+    "failMessage0": "Account does not exist!",
+    "failMessage1": "Try resetting your password!",
+    "failMessage2": "Incorrect password. Please try again!",
+    "failMessage3": "Login failed!",
+    "successMessage": "Welcome back! You’re now logged in."
+  },
+
+  "registerPage": {
+    "rightTitle": "Welcome Back!",
+    "subRightTitle": "Already have an account?",
+    "rightButton": "Login",
+    "leftTitle": "Register",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "leftButton": "Register",
+    "otherOption": "or continue with social platforms"
+  },
+  "nav": {
+    "home": "Home",
+    "travel": "Travel",
+    "products": "Products",
+    "news": "News",
+    "about": "About",
+    "message": "Message",
+    "login": "Login",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "profile": {
+    "title": "Profile",
+    "upload": "Upload Picture",
+    "fbLink": "Add Facebook",
+    "twitLink": "Add Twitter",
+    "igLink": "Add Instagram",
+    "ggLink": "Add Google+",
+    "username": "Username",
+    "usernamePlaceholder": "Username",
+    "provider": "Provider",
+    "aboutme": "About me",
+    "aboutmePlaceholder": "Write something about you!",
+    "discardBtn": "Discard Changes",
+    "saveBtn": "Save Changes"
+  }
+}

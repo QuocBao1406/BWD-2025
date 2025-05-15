@@ -1,0 +1,58 @@
+{
+  "welcome": "Chào mừng đến với website của chúng tôi!",
+  "language": "Ngôn ngữ",
+  "loginPage": {
+    "leftTitle": "Chào bạn!",
+    "subLeftTitle": "Bạn chưa có tài khoản ư?",
+    "leftButton": "Đăng kí",
+    "rightTitle": "Đăng nhập",
+    "username": "Tên người dùng",
+    "password": "Mật khẩu",
+    "forgotPassword": "Bạn quên mật khẩu?",
+    "rightButton": "Đăng nhập",
+    "otherOption": "hoặc tiếp tục với các tài khoản mạng xã hội",
+    "errorMessage0": "Tài khoản không tồn tại!",
+    "errorMessage1": "Hãy thử đặt lại mật khẩu của bạn!",
+    "errorMessage2": "Mật khẩu không đúng. Xin hãy thử lại!",
+    "errorMessage3": "Đăng nhập thất bại!",
+    "successMessage": "Chào bạn! Bây giờ bạn đã đăng nhập."
+  },
+
+  "registerPage": {
+    "rightTitle": "Chào mừng!",
+    "subRightTitle": "Bạn đã có tài khoản rồi ư?",
+    "rightButton": "Đăng nhập",
+    "leftTitle": "Đăng kí",
+    "username": "Tên người dùng",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "leftButton": "Đăng kí",
+    "otherOption": "hoặc tiếp tục với các tài khoản mạng xã hội"
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "travel": "Du lịch",
+    "products": "Sản phẩm",
+    "news": "Bảng tin",
+    "about": "Về chúng tôi",
+    "message": "Nhắn tin",
+    "login": "Đăng nhập",
+    "profile": "Hồ sơ",
+    "logout": "Đăng xuất"
+  },
+  "profile": {
+    "title": "Thông tin cá nhân",
+    "upload": "Tải ảnh lên",
+    "fbLink": "Thêm liên kết Facebook",
+    "twitLink": "Thêm liên kết Twitter",
+    "igLink": "Thêm liên kết Instagram",
+    "ggLink": "Thêm liên kết Google+",
+    "username": "Tên người dùng",
+    "usernamePlaceholder": "Tên người dùng",
+    "provider": "Loại tài khoản",
+    "aboutme": "Về tôi",
+    "aboutmePlaceholder": "Hãy viết điều gì đó về bạn nhé",
+    "discardBtn": "Hoàn tác",
+    "saveBtn": "Lưu thay đổi"
+  }
+}

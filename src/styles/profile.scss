@@ -1,0 +1,108 @@
+.profile-container {
+    width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    display: flex;
+    gap: 40px;
+}
+
+.left-panel {
+    width: 220px;
+    text-align: left;
+}
+
+.left-panel h2 {
+    color: #235347;
+    text-align: left;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.upload {
+    font-size: 14px;
+    color: #8EB69B;
+    cursor: pointer;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.social {
+    margin-top: 20px;
+}
+
+.social a {
+    display: block;
+    color: #333;
+    margin: 10px 0;
+    text-decoration: none;
+}
+
+.right-panel {
+    flex: 1;
+}
+
+.right-panel label {
+    display: block;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.right-panel input,
+.right-panel textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin-top: 6px;
+}
+
+.right-panel textarea {
+    resize: vertical;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.profile-container .btn {
+    width: 48%;
+    background: #235347;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    border: solid #235347 2px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.profile-container .btn:hover {
+    background: white;
+    color: #235347;
+    transform: scale(1.03);
+    box-shadow: 0 0 16px rgba(46, 139, 87, 0.4);
+}
+
+.profile-container .btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2) inset;
+}
+
+.sidebar-links {
+    position: absolute;
+    right: 60px;
+    top: 100px;
+}
+
+.sidebar-links a {
+    display: block;
+    color: #1a3e94;
+    margin: 8px 0;
+    text-decoration: none;
+}
