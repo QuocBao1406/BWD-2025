@@ -66,6 +66,7 @@
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
+  min-width: 500px;
 }
 
 /* Header popup */
@@ -251,19 +252,20 @@
 }
 
 .post-images {
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
+  margin-top: 10px;
 
   img {
     width: 100%;
-    height: auto;
-    max-height: 300px;
+    max-height: 500px;
     object-fit: cover;
     border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
 }
+
 
 .post-meta {
   margin-top: 10px;
@@ -351,11 +353,18 @@
     .comment-content-wrapper {
       margin-left: 10px;
 
+      // ✅ Thêm phần đóng khung như Facebook
+      background-color: #f0f2f5;
+      border-radius: 16px;
+      padding: 8px 12px;
+      max-width: 100%;
+
       .comment-author {
         font-weight: bold;
         font-size: 14px;
         color: #050505;
         text-decoration: none;
+        padding-right: 4px;
 
         &:hover {
           text-decoration: underline;
@@ -366,6 +375,7 @@
         display: block;
         font-size: 14px;
         color: #333;
+        padding-top: 2px;
       }
     }
   }
@@ -486,4 +496,16 @@
   cursor: pointer;
   font-size: 0.85em;
   padding: 0;
+}
+
+.post-avatar .avatar-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.default-avatar {
+  font-size: 40px;
+  margin-right: 10px;
 }

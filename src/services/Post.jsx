@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FaThumbsUp, FaRegThumbsUp, FaRegCommentAlt, FaUserCircle } from 'react-icons/fa';
 import { FiShare } from 'react-icons/fi';
-import { FacebookShareButton } from 'react-share';
 import { Link } from 'react-router-dom';
 
 const Post = ({ post, setPosts, currentUser }) => {
@@ -10,6 +9,7 @@ const Post = ({ post, setPosts, currentUser }) => {
   const [showSharePopup, setShowSharePopup] = useState(false);
 
   const hasLiked = currentUser && post.likedBy?.includes(currentUser.username);
+  const postUrl = `${window.location.origin}/post/${post.id}`;
 
   const handleLike = () => {
     if (!currentUser) return;
@@ -17,11 +17,11 @@ const Post = ({ post, setPosts, currentUser }) => {
     setPosts(prevPosts =>
       prevPosts.map(p => {
         if (p.id === post.id) {
-          const hasLiked = p.likedBy?.includes(currentUser.username);
+          const liked = p.likedBy?.includes(currentUser.username);
           return {
             ...p,
-            likes: hasLiked ? p.likes - 1 : p.likes + 1,
-            likedBy: hasLiked
+            likes: liked ? p.likes - 1 : p.likes + 1,
+            likedBy: liked
               ? p.likedBy.filter(user => user !== currentUser.username)
               : [...(p.likedBy || []), currentUser.username]
           };
@@ -38,8 +38,8 @@ const Post = ({ post, setPosts, currentUser }) => {
     const newComment = {
       id: Date.now(),
       content: comment,
-      author: currentUser.name,       // hoặc currentUser.name nếu có
-      authorUsername: currentUser.username,  // thêm dòng này
+      author: currentUser.name,
+      authorUsername: currentUser.username,
       authorId: currentUser.id,
       authorAvatar: currentUser.avatar,
       createdAt: new Date().toISOString()
@@ -56,8 +56,6 @@ const Post = ({ post, setPosts, currentUser }) => {
   };
 
   const handleShare = (type) => {
-    const postUrl = `${window.location.origin}/post/${post.id}`;
-
     if (type === 'copy') {
       if (navigator.clipboard) {
         navigator.clipboard.writeText(postUrl);
@@ -75,12 +73,35 @@ const Post = ({ post, setPosts, currentUser }) => {
     setShowSharePopup(false);
   };
 
+  const handleFacebookShare = () => {
+    const postUrl = `${window.location.origin}/post/${post.id}`;
+    const caption = `${post.content}\n\n📎 Xem bài viết tại: ${postUrl}`;
+
+    // Copy caption
+    navigator.clipboard.writeText(caption).then(() => {
+      alert('Mở Facebook!');
+
+      // Mở share Facebook
+      const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`;
+      window.open(fbUrl, '_blank', 'width=600,height=500');
+    });
+  };
+
+
   return (
     <div className='post'>
       <div className='post-header'>
         <div className="author-info">
-          <Link to={`/profile/${comment.authorId}`} className='comment-author'>
-            {comment.author}
+          <Link to={`/profile/${post.authorId}`} className="post-avatar">
+            {post.authorAvatar ? (
+              <img
+                src={post.authorAvatar}
+                alt={`${post.author}'s avatar`}
+                className="avatar-image"
+              />
+            ) : (
+              <FaUserCircle className="default-avatar" />
+            )}
           </Link>
           <div className="author-details">
             <Link to={`/profile/${post.authorId}`} className="post-author">
@@ -101,8 +122,13 @@ const Post = ({ post, setPosts, currentUser }) => {
             {post.images.map((img, index) => (
               <img
                 key={index}
-                src={img}
+                src={
+                  img.startsWith('/uploads')
+                    ? `http://localhost:5000${img}`
+                    : `data:image/png;base64,${img}`
+                }
                 alt={`post-${post.id}-${index}`}
+                style={{ maxWidth: '100%', borderRadius: '8px' }}
               />
             ))}
           </div>
@@ -144,7 +170,6 @@ const Post = ({ post, setPosts, currentUser }) => {
         </button>
       </div>
 
-      {/* Popup chia sẻ nổi */}
       {showSharePopup && (
         <div className="share-popup-overlay" onClick={() => setShowSharePopup(false)}>
           <div className="share-popup" onClick={(e) => e.stopPropagation()}>
@@ -155,13 +180,9 @@ const Post = ({ post, setPosts, currentUser }) => {
               </button>
             </div>
             <div className="share-popup-body">
-              <FacebookShareButton
-                url={`${window.location.origin}/post/${post.id}`}
-                quote={post.content}
-                className="share-option"
-              >
-                <span>📘 Chia sẻ lên Facebook</span>
-              </FacebookShareButton>
+              <button className="share-option" onClick={handleFacebookShare}>
+                📘 Chia sẻ lên Facebook
+              </button>
               <button className="share-option" onClick={() => handleShare('copy')}>
                 🔗 Copy link bài viết
               </button>
@@ -170,7 +191,6 @@ const Post = ({ post, setPosts, currentUser }) => {
         </div>
       )}
 
-      {/* Hiển thị bình luận nếu bật */}
       {showComments && (
         <div className='post-comments'>
           {post.comments?.map(comment => (
@@ -188,23 +208,18 @@ const Post = ({ post, setPosts, currentUser }) => {
                   )}
                 </Link>
                 <div className="comment-content-wrapper">
-                <div className='comment-header'>
-                  <Link to={`/profile/${comment.authorId}`} className='comment-author'>
-                    {comment.author}
-                  </Link>
-                  <small className='comment-time'>
-                    {new Date(comment.createdAt).toLocaleString()}
-                  </small>
+                  <div className='comment-header'>
+                    <Link to={`/profile/${comment.authorId}`} className='comment-author'>
+                      {comment.author}
+                    </Link>
+                    <small className='comment-time'>
+                      {new Date(comment.createdAt).toLocaleString()}
+                    </small>
+                  </div>
+                  <div className='comment-body'>
+                    <span className='comment-content'>{comment.content}</span>
+                  </div>
                 </div>
-                <div className='comment-body'>
-                  <span className='comment-content'>{comment.content}</span>
-                </div>
-                <div className="comment-actions">
-                  <button className='comment-like-btn'>Thích</button>
-                  <button className='comment-reply-btn'>Phản hồi</button>
-                </div>
-
-              </div>
               </div>
             </div>
           ))}

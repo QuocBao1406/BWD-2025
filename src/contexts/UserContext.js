@@ -8,9 +8,17 @@ export const UserProvider = ({ children }) => {
     return stored ? JSON.parse(stored) : null;
   });
 
+  // Cập nhật user nếu localStorage thay đổi (đồng bộ giữa các tab hoặc sau đăng nhập)
   useEffect(() => {
-    const stored = localStorage.getItem('user');
-    if (stored) setUser(JSON.parse(stored));
+    const syncUserFromStorage = () => {
+      const stored = localStorage.getItem('user');
+      setUser(stored ? JSON.parse(stored) : null);
+    };
+
+    window.addEventListener('storage', syncUserFromStorage);
+    return () => {
+      window.removeEventListener('storage', syncUserFromStorage);
+    };
   }, []);
 
   return (

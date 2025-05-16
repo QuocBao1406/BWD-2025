@@ -13,6 +13,7 @@ import OAuthSuccess from '../pages/OAuthSuccess';
 import Profile from '../components/Profile';
 import Settings from '../components/Settings';
 import i18n from '../i18n';
+import PostDetail from '../components/PostDetail';
 
 function BodyClassManager() {
   const location = useLocation();
@@ -53,6 +54,7 @@ function App() {
           <Route path="/oauth-success" element={<OAuthSuccess />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/post/:id" element={<PostDetail />} />
         </Routes>
       </div>
     </Router>

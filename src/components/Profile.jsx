@@ -26,7 +26,7 @@ const Profile = () => {
             email: data.email,
             provider: data.auth_provider || 'local',
             avatar: 'data:image/png;base64,' + data.avatar,
-            aboutme: localUser.aboutme || 'I am Thanhduck...',
+            aboutme: localUser.aboutme || '',
           };
           setUser(fullUser);
           setFormData({
@@ -85,6 +85,8 @@ const Profile = () => {
         const updatedUser = { ...user, ...formData };
         localStorage.setItem('user', JSON.stringify(updatedUser));
         setUser(updatedUser);
+
+        window.location.reload();
       } else {
         alert('Lỗi khi lưu: ' + result.message);
       }

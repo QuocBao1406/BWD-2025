@@ -52,6 +52,19 @@ const createDatabaseAndTables = async () => {
     WHERE id NOT IN (SELECT user_id FROM user_profiles);
   `);
 
+  await connection.query(`
+  CREATE TABLE IF NOT EXISTS posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    content TEXT,
+    images JSON,
+    author_id INT,
+    author_name VARCHAR(100),
+    author_avatar TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE SET NULL
+  ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+`);
+
   console.log('✅ DB và bảng đã được tạo!');
   await connection.end();
 };
