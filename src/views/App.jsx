@@ -14,6 +14,9 @@ import Profile from '../components/Profile';
 import Settings from '../components/Settings';
 import i18n from '../i18n';
 import PostDetail from '../components/PostDetail';
+import '../components/Cart';
+import ProductDetail from '../components/ProductDetail';
+import Cart from '../components/Cart';
 
 function BodyClassManager() {
   const location = useLocation();
@@ -55,6 +58,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/post/:id" element={<PostDetail />} />
+          <Route path="/product-detail/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>
     </Router>

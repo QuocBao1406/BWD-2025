@@ -1,0 +1,216 @@
+.cart-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Thêm thanh cuộn ngang khi cần */
+  overflow-y: visible; /* Đảm bảo không bị khuất theo chiều dọc */
+}
+
+.cart-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto; /* Cho phép bảng tự động điều chỉnh kích thước */
+}
+
+/* Responsive Table */
+.cart-table th,
+.cart-table td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  font-size: 12px; /* Giảm kích thước chữ */
+}
+
+.cart-table th {
+  background: #f0f0f0;
+}
+
+.cart-table img {
+  border-radius: 5px;
+  max-width: 80px; /* Đặt kích thước tối đa cho ảnh */
+  height: auto;
+}
+
+.cart-summary {
+  margin-top: 20px;
+  text-align: right;
+  position: sticky; /* Luôn hiển thị nút "Mua Tất Cả" khi cuộn */
+  bottom: 0;
+  background: #fff;
+  padding: 10px 0;
+  z-index: 10;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#checkout-all {
+  background: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#checkout-all:hover {
+  background: #218838;
+}
+
+.buy-button,
+.remove-button {
+  background: #007bff; 
+  color: white; 
+  border: none;
+  padding: 5px 8px; 
+  border-radius: 3px; 
+  font-size: 10px; 
+  cursor: pointer;
+}
+
+.buy-button:hover {
+  background: #0056b3;
+}
+
+.remove-button {
+  background: #dc3545;
+}
+
+.remove-button:hover {
+  background: #bd2130;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#order-form input,
+#order-form button {
+  width: 95%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#order-form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#order-form button:hover {
+  background-color: #218838;
+}
+
+/* CSS cho đơn vị tiền tệ nhỏ */
+.currency {
+  font-size: 12px; 
+  vertical-align: super; /* Đặt lên trên một chút */
+  color: #888; 
+  margin-left: 2px; 
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+  .cart-container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .cart-table th,
+  .cart-table td {
+    font-size: 12px; 
+    padding: 8px;
+  }
+
+  .cart-table input[type="number"] {
+    width: 15px; 
+    padding: 5px; 
+    text-align: center; 
+    font-size: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+  }
+
+  .cart-table img {
+    max-width: 60px; 
+  }
+
+  #checkout-all {
+    width: 100%; 
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Responsive cho màn hình rất nhỏ */
+@media (max-width: 480px) {
+  .cart-container {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .cart-table {
+    font-size: 10px;
+  }
+
+  .cart-table th,
+  .cart-table td {
+    padding: 6px;
+  }
+
+  .cart-summary {
+    text-align: center; /* Đặt nút ở giữa trên màn hình cực nhỏ */
+  }
+
+  #checkout-all {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .modal-content {
+    margin: 25% auto;
+    width: 90%; /* Đảm bảo modal vừa với màn hình nhỏ */
+  }
+}
