@@ -1,17 +1,19 @@
-import express, { json } from 'express';
+import express from 'express';
 import cors from 'cors';
 import authRoutes from './routes/auth.js';
 import profileRoutes from './routes/profile.js';
 import postRoutes from './routes/posts.js';
-import uploadRoutes from './routes/upload.js'; // ✅ thêm dòng này
+import uploadRoutes from './routes/upload.js';
 import initDB from './initDB.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const app = express();
+
 app.use(cors());
 
-app.use(json({ limit: '10mb' })); // ✅ tăng giới hạn payload nếu cần
+// Tăng giới hạn body JSON lên 10MB để tránh lỗi payload quá lớn
+app.use(express.json({ limit: '10mb' }));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,10 +22,13 @@ const __dirname = path.dirname(__filename);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Mount các routes
-app.use('/api', authRoutes);
-app.use('/api', profileRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/profile', profileRoutes);
 app.use('/api/posts', postRoutes);
-app.use('/api/upload', uploadRoutes); // ✅ mount upload ảnh
+app.use('/api/upload', uploadRoutes);
+
+// Khởi tạo database nếu cần
+initDB();
 
 const PORT = 5000;
 app.listen(PORT, () => {

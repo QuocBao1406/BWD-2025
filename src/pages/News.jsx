@@ -16,10 +16,14 @@ function News() {
       .then(data => {
         const loadedPosts = data.map(post => ({
           ...post,
-          images: JSON.parse(post.images), // chuyển chuỗi JSON sang mảng
-          createdAt: new Date(post.created_at).toLocaleString(), // định dạng thời gian
+          images: JSON.parse(post.images || '[]'),
+          likedBy: Array.isArray(post.likedBy)
+            ? post.likedBy
+            : JSON.parse(post.likedBy || '[]'),
+          comments: JSON.parse(post.comments || '[]'),
+          createdAt: new Date(post.created_at).toLocaleString(),
           author: post.author_name,
-          authorAvatar: post.author_avatar
+          authorAvatar: post.author_avatar,
         }));
         setPosts(loadedPosts);
       })
@@ -27,42 +31,43 @@ function News() {
   }, []);
 
   const handlePostSubmit = async (newPost) => {
-  if (!currentUser) return;
+    if (!currentUser) return;
 
-  const postToSave = {
-    content: newPost.content,
-    images: newPost.images, // mảng base64 thuần
-    author: currentUser.name || currentUser.username,
-    authorId: currentUser.id,
-    authorAvatar: currentUser.avatar,
-  };
-
-  try {
-    const res = await fetch('http://localhost:5000/api/posts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(postToSave)
-    });
-
-    if (!res.ok) throw new Error('Lỗi khi lưu bài viết');
-
-    const data = await res.json(); // Lấy id từ backend
-
-    const localPost = {
-      ...postToSave,
-      id: data.id, // ✅ ID từ DB để dùng chia sẻ
-      likes: 0,
-      comments: [],
-      createdAt: new Date().toISOString()
+    const postToSave = {
+      content: newPost.content,
+      images: newPost.images,
+      author: currentUser.name,
+      authorId: currentUser.id,
+      authorAvatar: currentUser.avatar,
     };
 
-    setPosts(prev => [localPost, ...prev]);
-    setShowPostCreator(false);
-  } catch (err) {
-    alert('Không thể đăng bài. Lỗi server.');
-    console.error(err);
-  }
-};
+    try {
+      const res = await fetch('http://localhost:5000/api/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(postToSave)
+      });
+
+      if (!res.ok) throw new Error('Lỗi khi lưu bài viết');
+
+      const data = await res.json();
+
+      const localPost = {
+        ...postToSave,
+        id: data.id,
+        likes: 0,
+        comments: [],
+        likedBy: [],
+        createdAt: new Date().toISOString()
+      };
+
+      setPosts(prev => [localPost, ...prev]);
+      setShowPostCreator(false);
+    } catch (err) {
+      alert('Không thể đăng bài. Lỗi server.');
+      console.error(err);
+    }
+  };
 
   const openPostCreator = () => {
     if (!currentUser) {

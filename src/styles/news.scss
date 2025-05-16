@@ -394,7 +394,7 @@
     border-radius: 50%;
   }
 
-  input {
+  input .comment-input {
     flex: 1;
     padding: 8px 12px;
     border-radius: 20px;
@@ -508,4 +508,14 @@
 .default-avatar {
   font-size: 40px;
   margin-right: 10px;
+}
+
+.like-btn {
+  color: gray;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.like-btn.liked {
+  color: #1877f2; /* màu xanh */
 }

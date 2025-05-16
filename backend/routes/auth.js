@@ -59,6 +59,7 @@ router.post('/login', async (req, res) => {
       message: 'LOGIN SUCESSFUL!',
       id: user.id,
       username: user.username,
+      name: user.name,     // thêm trường name
       email: user.email,
       avatar: user.avatar ? `data:image/jpeg;base64,${Buffer.from(user.avatar).toString('base64')}` : null
     });

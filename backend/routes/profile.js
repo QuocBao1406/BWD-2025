@@ -3,7 +3,8 @@ import { query } from '../db.js';
 
 const router = express.Router();
 
-router.put('/profile/update', async (req, res) => {
+// ✅ PUT /api/profile/update
+router.put('/update', async (req, res) => {
   const { email, name, provider, aboutme } = req.body;
 
   try {
@@ -22,7 +23,8 @@ router.put('/profile/update', async (req, res) => {
   }
 });
 
-router.post('/profile/avatar', async (req, res) => {
+// ✅ POST /api/profile/avatar
+router.post('/avatar', async (req, res) => {
   const { userId, avatar } = req.body;
   if (!userId || !avatar) return res.status(400).json({ message: 'Thiếu userId hoặc avatar' });
 
@@ -36,7 +38,8 @@ router.post('/profile/avatar', async (req, res) => {
   }
 });
 
-router.get('/profile/:id', async (req, res) => {
+// ✅ GET /api/profile/:id
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const [rows] = await query(
