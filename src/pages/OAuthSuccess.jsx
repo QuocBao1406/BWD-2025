@@ -1,31 +1,35 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { UserContext } from '../contexts/UserContext';
 
 const OAuthSuccess = () => {
-    const [searchParams] = useSearchParams();
-    const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
 
-    useEffect(() => {
-        const name = searchParams.get('name');
-        const email = searchParams.get('email');
-        const avatar = searchParams.get('avatar');
-        const provider = searchParams.get('provider');
+  useEffect(() => {
+    const email = searchParams.get('email');
+    const fallbackName = searchParams.get('name');
+    const fallbackAvatar = searchParams.get('avatar');
+    const fallbackProvider = searchParams.get('provider');
 
-        const user = {
-            name,
-            email,
-            avatar,
-            // provider: 'google'
-            provider
-        };
+    if (!email) {
+      navigate('/login');
+      return;
+    }
+    
+    const user = {
+      email,
+      name: fallbackName || 'Người dùng',
+      username: fallbackName,
+      avatar: fallbackAvatar || 'https://example.com/default-avatar.png',
+      provider: fallbackProvider || 'local',
+    };
+    setUser(user);
 
-        localStorage.setItem('user', JSON.stringify(user));
+  }, [navigate, searchParams, setUser]);
 
-        // ✅ Sau khi xử lý xong, về trang chủ
-        navigate('/');
-    }, [navigate, searchParams]);
-
-    return <div>Đang đăng nhập...</div>;
+  return <div>Đang đăng nhập...</div>;
 };
 
 export default OAuthSuccess;

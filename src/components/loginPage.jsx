@@ -25,28 +25,38 @@ function LoginPage() {
   const [ReSuccessMessage, setReSucessMessage] = useState("");
   const [ReErrorMessage, setReErrorMessage] = useState("");
 
+  // Đã sửa URL đúng: /api/auth/register
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:5000/api/register', {
+      const res = await fetch('http://localhost:5000/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(registerData)
       });
 
-      setReSucessMessage("");
+      const text = await res.text();
 
-      if (!res.ok) {
-        const errorData = await res.json();
-        setReErrorMessage(errorData.message);
-        throw new Error(errorData.message || 'Registration failed. Please try again!');
+      // Thử parse JSON, nếu lỗi thì log ra text trả về để debug
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (err) {
+        console.error('Response không phải JSON:', text);
+        alert('Server trả về dữ liệu không đúng định dạng JSON. Vui lòng kiểm tra URL API và backend.');
+        return;
       }
 
-      const data = await res.json();
-      setReErrorMessage("");
+      if (!res.ok) {
+        setReErrorMessage(data.message || 'Lỗi khi đăng ký!');
+        throw new Error(data.message || 'Lỗi khi đăng ký!');
+      }
+
+      setReErrorMessage('');
       setReSucessMessage(data.message);
+
     } catch (err) {
-      setReErrorMessage(err.message || 'Backend connection failed or unknown error.!');
+      setReErrorMessage(err.message || 'Lỗi kết nối server hoặc lỗi không xác định!');
       console.error(err);
     }
   };
@@ -62,7 +72,7 @@ function LoginPage() {
     setIsLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {  // <-- sửa URL đúng tại đây
+      const res = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginData),
@@ -108,14 +118,13 @@ function LoginPage() {
       const localUser = {
         id: data.id,
         username: data.username || loginData.username,
-        name: data.name || data.username || loginData.username,  // thêm name
+        name: data.name || data.username || loginData.username,
         email: data.email || '',
         provider: 'local',
         avatar: data.avatar || null
       };
       localStorage.setItem('user', JSON.stringify(localUser));
       setUser(localUser);
-
 
       setTimeout(() => {
         navigate('/');

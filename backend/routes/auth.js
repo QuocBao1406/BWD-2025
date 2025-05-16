@@ -74,12 +74,12 @@ const GOOGLE_CLIENT_ID = '56923204359-bvfrbnjevbgf50ua855dma9h4gc93gjn.apps.goog
 const GOOGLE_CLIENT_SECRET = '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';
 const GOOGLE_REDIRECT_URI = 'http://localhost:5000/api/auth/google/callback';
 
-router.get('/auth/google', (req, res) => {
+router.get('/google', (req, res) => {
   const redirectUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${GOOGLE_REDIRECT_URI}&response_type=code&scope=openid%20email%20profile`;
   res.redirect(redirectUrl);
 });
 
-router.get('/auth/google/callback', async (req, res) => {
+router.get('/google/callback', async (req, res) => {
   const { code } = req.query;
 
   try {
@@ -132,12 +132,12 @@ const DISCORD_CLIENT_ID = '1370100195274133664';
 const DISCORD_CLIENT_SECRET = 'KRDex32jakr0anszGo4ol0Dz_ao6DnI6';
 const DISCORD_REDIRECT_URI = 'http://localhost:5000/api/auth/discord/callback';
 
-router.get('/auth/discord', (req, res) => {
+router.get('/discord', (req, res) => {
   const redirectUrl = `https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(DISCORD_REDIRECT_URI)}&response_type=code&scope=identify%20email`;
   res.redirect(redirectUrl);
 });
 
-router.get('/auth/discord/callback', async (req, res) => {
+router.get('/discord/callback', async (req, res) => {
   const { code } = req.query;
 
   try {
@@ -196,13 +196,13 @@ const GITHUB_CLIENT_SECRET = '30a18a87ba84f6bbe79506abc612555a4e751068';
 const GITHUB_REDIRECT_URI = 'http://localhost:5000/api/auth/github/callback';
 
 // B1: Redirect người dùng đến GitHub login
-router.get('/auth/github', (req, res) => {
+router.get('/github', (req, res) => {
   const githubUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${GITHUB_REDIRECT_URI}&scope=user`;
   res.redirect(githubUrl);
 });
 
 // B2: GitHub callback
-router.get('/auth/github/callback', async (req, res) => {
+router.get('/github/callback', async (req, res) => {
   const { code } = req.query;
 
   try {
@@ -271,12 +271,12 @@ const FACEBOOK_CLIENT_ID = '1050396430472400';
 const FACEBOOK_CLIENT_SECRET = 'cdb40cf65c49d7b52facc8eebdb55a2c';
 const FACEBOOK_REDIRECT_URI = 'http://localhost:5000/api/auth/facebook/callback';
 
-router.get('/auth/facebook', (req, res) => {
+router.get('/facebook', (req, res) => {
   const url = `https://www.facebook.com/v18.0/dialog/oauth?client_id=${FACEBOOK_CLIENT_ID}&redirect_uri=${FACEBOOK_REDIRECT_URI}&scope=email,public_profile`;
   res.redirect(url);
 });
 
-router.get('/auth/facebook/callback', async (req, res) => {
+router.get('/facebook/callback', async (req, res) => {
   const { code } = req.query;
   try {
     const tokenRes = await axios.get('https://graph.facebook.com/v18.0/oauth/access_token', {
