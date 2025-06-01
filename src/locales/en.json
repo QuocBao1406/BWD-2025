@@ -18,6 +18,27 @@
     "successMessage": "Welcome back! You’re now logged in."
   },
 
+  "home": {
+    "bigTitle1": "GREEN",
+    "bigTitle2": "TRAVEL",
+    "subTitle": "T O W A R D S A S U S T A I N A B L E F U T U R E",
+    "introduction": "An eco-friendly travel style that respects, protects, and promotes local culture. Green travel not only safeguards nature but also preserves the beauty and identity of Vietnam’s ethnic cultures.",
+    "hintBtn": "Travel Suggestions",
+    "loginBtn": "Log in now",
+    "newsBtn": "Explore the feed",
+    "reason": "Why It Matters",
+    "reasonDescription": "The world is facing an environmental crisis, pollution, and poorly managed tourism that can harm nature and ecosystems. In Vietnam, many eco-tourism destinations remain undiscovered due to limited promotion.",
+    "issue": "Challenges",
+    "issue1": "Rising environmental pollution from littering by unaware tourists; overexploitation of natural resources like forests, streams, and coral reefs.",
+    "issue2": "Lack of guidance leaves many young people eager for green travel unsure where to start.",
+    "issue3": "Ineffective promotion means many green destinations, like pristine forests and eco-friendly craft villages, remain largely unknown.",
+    "issue4": "Low community awareness; green travel is often misunderstood as costly or inconvenient, and the impact of individual actions on the environment is overlooked.",
+    "action1": "Take",
+    "action2": "Action",
+    "product": "Our Product",
+    "actionDescription": "We’re a group of tech-savvy students who love nature. Together, we’ve brainstormed, designed, created content, and coded the 'Green Travel' website as a passion project to inspire others while showcasing modern web design skills and digital transformation in tourism."
+  },
+
   "registerPage": {
     "rightTitle": "Welcome Back!",
     "subRightTitle": "Already have an account?",
@@ -38,7 +59,8 @@
     "message": "Message",
     "login": "Login",
     "profile": "Profile",
-    "logout": "Logout"
+    "logout": "Logout",
+    "theme": "Themes mode"
   },
   "profile": {
     "title": "Profile",

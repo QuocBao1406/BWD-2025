@@ -29,7 +29,7 @@ const Navbar = () => {
       <div className={`nav-center ${isOpen ? 'open' : ''}`}>
         <ul>
           <li className="linkPage"><NavLink to='/'>{t('nav.home')}</NavLink></li>
-          <li className="linkPage"><NavLink to='/travel'>{t('nav.travel')}</NavLink></li>
+          <li className="linkPage"><NavLink to="/travel">{t('nav.travel')}</NavLink></li>
           <li className="linkPage"><NavLink to='/products'>{t('nav.products')}</NavLink></li>
           <li className="linkPage"><NavLink to='/news'>{t('nav.news')}</NavLink></li>
           <li className="linkPage"><NavLink to='/about'>{t('nav.about')}</NavLink></li>

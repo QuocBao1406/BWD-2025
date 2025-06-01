@@ -1,7 +1,11 @@
 import React from 'react';
 
-function Travel() {
-  return <h2>Travel Page</h2>;
+function About() {
+  return (
+    <div className="about-container">
+      <h2>Travel</h2>
+    </div>
+  );
 }
 
-export default Travel;
+export default About

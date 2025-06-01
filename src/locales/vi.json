@@ -29,6 +29,28 @@
     "leftButton": "Đăng kí",
     "otherOption": "hoặc tiếp tục với các tài khoản mạng xã hội"
   },
+
+  "home": {
+    "bigTitle1": "DU LỊCH",
+    "bigTitle2": "XANH",
+    "subTitle": "H Ư Ớ N G Đ I B Ề N V Ữ N G C H O T Ư Ơ N G L A I",
+    "introduction": "Loại hình du lịch thân thiện với môi trường, tôn trọng, bảo vệ và phát triển văn hoá bản địa. Du lịch xanh không chỉ bảo vệ thiên nhiên mà còn gìn giữ những nét đẹp, bản sắc của văn hoá dân tộc Việt Nam.",
+    "hintBtn": "Gợi ý du lịch",
+    "loginBtn": "Đăng nhập",
+    "newsBtn": "Khám phá bảng tin",
+    "reason": "Lý do",
+    "reasonDescription": "Thế giới hiện nay đang đối mặt với khủng hoảng môi trường, ô nhiễm và du lịch đang không được định hướng đúng, do đó có thể gây hại đến thiên nhiên và hệ sinh thái. Tại Việt Nam, nhiều khu du lịch sinh thái còn chưa được biết đến rộng rãi, thiếu sự quảng bá rộng rãi.",
+    "issue": "Thực trạng",
+    "issue1": "Ô nhiễm môi trường tăng cao do du khách thiếu ý thức, xả rác bừa bãi; tài nguyên thiên nhiên như rừng, suối, san hô bị khai thác quá mức.",
+    "issue2": "Thiếu thông tin hướng dẫn khiến nhiều bạn trẻ muốn du lịch xanh nhưng không biết bắt đầu từ đâu.",
+    "issue3": "Quảng bá chưa hiệu quả, nhiều điểm đến xanh như rừng nguyên sinh, làng nghề thân thiện môi trường vẫn chưa được giới thiệu rộng rãi.",
+    "issue4": "Nhận thức cộng đồng còn thấp, du lịch xanh bị hiểu nhầm là tốn kém, thiếu tiện nghi; chưa thấy rõ tác động của hành vi cá nhân đến môi trường.",
+    "action1": "Hành",
+    "action2": "Động",
+    "product": "Sản phẩm",
+    "actionDescription": "Chúng mình – một nhóm sinh viên đam mê công nghệ và yêu thiên nhiên – đã cùng lên ý tưởng, thiết kế, xây dựng nội dung và lập trình nên website 'Du lịch xanh' như một dự án truyền cảm hứng, đồng thời thể hiện kỹ năng thiết kế web hiện đại và ứng dụng chuyển đổi số vào du lịch."
+  },
+
   "nav": {
     "home": "Trang chủ",
     "travel": "Du lịch",
@@ -37,9 +59,11 @@
     "about": "Về chúng tôi",
     "message": "Nhắn tin",
     "login": "Đăng nhập",
-    "profile": "Hồ sơ",
-    "logout": "Đăng xuất"
+    "profile": "Tài khoản",
+    "logout": "Đăng xuất",
+    "theme": "Chế độ hiển thị"
   },
+
   "profile": {
     "title": "Thông tin cá nhân",
     "upload": "Tải ảnh lên",
