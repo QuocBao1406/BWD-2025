@@ -1,40 +1,43 @@
 import React, { useState } from 'react';
 import '../styles/About.scss';
 import bao from '../assets/images/about/anhs.jpg';
-import gai from '../assets/images/about/girl-8136225.jpg';
+import hduc from '../assets/images/about/hduc.jpg';
+import baotung from '../assets/images/about/baosontung.jpg';
+import tduc from '../assets/images/about/tduc.jpg';
+import khoa from '../assets/images/about/khoa.jpg';
 
 const previewImages = [
-  bao,
-  gai,
-  bao,
-  bao
+  baotung,
+  tduc,
+  hduc,
+  khoa
 ];
 
 const AboutPage = () => {
   const members = [
     {
-      img: bao,
+      img: baotung,
       name: 'Nguyễn Hữu Quốc Bảo',
       role: 'Trưởng nhóm',
       quote: 'Tôi không phải là siêu nhân, nhưng tôi có thể biến deadline thành động lực, biến bug thành bài học, và biến cà phê thành... sản phẩm chạy được!',
       preview: 'member4-small.jpg'
     },
     {
-      img: gai,
+      img: tduc,
       name: 'Trần Thanh Đức',
       role: 'Lập trình',
       quote: 'Mây núi ngàn năm, sóng biển vỗ mãi – đất Việt trao ta sự sống, hãy đáp lại bằng tình yêu.',
       preview: 'anhs.jpg'
     },
     {
-      img: bao,
+      img: hduc,
       name: 'Lê Hoài Đức',
       role: 'Thiết kế',
       quote: 'đi là để trải nghiệm, đi là để học.',
       preview: 'girl-8093350.jpg'
     },
     {
-      img: bao,
+      img: khoa,
       name: 'Lê Đăng Khoa',
       role: 'Hậu cần',
       quote: 'Hãy sống như thể ngày mai ta sẽ đi xa.',
